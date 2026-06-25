@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            background-color: #fafafa;
+            color: #1e1e2a;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.25rem;
+        }
+
+        .container {
+            max-width: 780px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0.5rem 0 3rem 0;
+        }
+
+        header {
+            padding: 2.5rem 0 1.2rem 0;
+            border-bottom: 1px solid #e4e4ed;
+        }
+
+        .site-title {
+            font-size: 1.9rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            color: #1f1f2b;
+            margin-bottom: 0.25rem;
+        }
+
+        .site-sub {
+            color: #5c5c6e;
+            font-size: 0.95rem;
+            font-weight: 380;
+            margin-top: 0.2rem;
+        }
+
+        .hero-note {
+            margin: 2.8rem 0 2rem 0;
+        }
+
+        .hero-note h2 {
+            font-size: 1.75rem;
+            font-weight: 460;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.85rem;
+            color: #12121c;
+        }
+
+        .hero-note p {
+            font-size: 1.05rem;
+            color: #2e2e3c;
+            max-width: 640px;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2.8rem 0;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #ffffff;
+            padding: 1.6rem 1.4rem;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 6px 18px rgba(0,0,0,0.03);
+            border: 1px solid #edeef3;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04), 0 12px 28px rgba(0,0,0,0.03);
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #1b1b2b;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #404055;
+        }
+
+        .scenario-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem 1.8rem;
+            margin: 2.4rem 0;
+            border: 1px solid #e9eaf0;
+        }
+
+        .scenario-block h3 {
+            font-size: 1.3rem;
+            font-weight: 480;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+            color: #141420;
+        }
+
+        .scenario-block ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .scenario-block li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: #333348;
+            font-size: 0.98rem;
+        }
+
+        .scenario-block li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #6a6a80;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .faq-mini {
+            margin: 3rem 0 2.2rem 0;
+            padding: 0.2rem 0;
+        }
+
+        .faq-mini details {
+            border-bottom: 1px solid #e4e4ed;
+            padding: 0.8rem 0;
+        }
+
+        .faq-mini details:first-of-type {
+            border-top: 1px solid #e4e4ed;
+        }
+
+        .faq-mini summary {
+            font-weight: 480;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #1e1e30;
+            padding: 0.3rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-mini summary::after {
+            content: "+";
+            font-size: 1.1rem;
+            color: #6a6a80;
+            margin-left: 0.5rem;
+            font-weight: 300;
+        }
+
+        .faq-mini details[open] summary::after {
+            content: "–";
+        }
+
+        .faq-mini .answer {
+            padding: 0.4rem 0 0.6rem 0.2rem;
+            color: #38384a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .usage-note {
+            margin: 2.2rem 0 2.8rem 0;
+            padding: 1.6rem 1.8rem;
+            background: #f4f4fa;
+            border-radius: 20px;
+            border-left: 4px solid #7d7d99;
+        }
+
+        .usage-note p {
+            font-size: 0.98rem;
+            color: #262636;
+        }
+
+        .inline-link-highlight {
+            color: #1f2b4e;
+            text-decoration: none;
+            font-weight: 470;
+            border-bottom: 1px solid #c9c9dd;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link-highlight:hover {
+            border-bottom-color: #1f2b4e;
+        }
+
+        .closing-line {
+            margin-top: 3.2rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e4e4ed;
+            font-size: 0.9rem;
+            color: #5d5d72;
+        }
+
+        @media (max-width: 550px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .site-title {
+                font-size: 1.6rem;
+            }
+            .hero-note h2 {
+                font-size: 1.45rem;
+            }
+            .feature-item {
+                flex: 1 1 100%;
+            }
+            .scenario-block {
+                padding: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="site-title">homezh-fifa2026</div>
+            <div class="site-sub">赛事信息 · 稳定访问入口</div>
+        </header>
+
+        <div class="hero-note">
+            <h2>页面说明：一个可靠的起点</h2>
+            <p>对于关注下一届<span style="font-weight:470;">世界杯</span>动态的用户而言，一个清晰、低干扰的入口往往比杂乱的信息聚合更有价值。本页不堆叠数据，而是尝试用克制的篇幅解释这个站点的定位与使用场景。</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>摘要</h3>
+                <p>围绕 <a href="https://homezh-fifa2026.com" class="inline-link-highlight">世界杯</a> 提供简洁的内容聚合与导航。页面结构以信息可读性优先，减少无关元素。</p>
+            </div>
+            <div class="feature-item">
+                <h3>亮点</h3>
+                <p>布局聚焦于赛事相关的背景说明与实用链接，没有弹窗、自动播放或过度营销内容。适合快速了解站点用途。</p>
+            </div>
+            <div class="feature-item">
+                <h3>使用建议</h3>
+                <p>可直接将本页设为书签，作为了解该赛事的稳定入口。页面内容会随赛事阶段微调，但保持一贯的简洁调性。</p>
+            </div>
+        </div>
+
+        <div class="scenario-block">
+            <h3>常见使用场景</h3>
+            <ul>
+                <li>想找一个不含广告干扰、专门介绍下一届 <a href="https://homezh-fifa2026.com" class="inline-link-highlight">世界杯</a> 的静态页面作为信息起点。</li>
+                <li>需要快速向朋友或同事分享一个中立的赛事介绍页，而不必打开社交平台或视频网站。</li>
+                <li>在关注赛程、主办城市等公开信息之前，先确认一个稳定、长期可访问的地址。</li>
+            </ul>
+        </div>
+
+        <div class="faq-mini">
+            <details>
+                <summary>这个页面是官方站点吗？</summary>
+                <div class="answer">不是。这是一个由个人维护的静态说明页，旨在为关注下一届世界杯的用户提供一个简洁的索引和介绍。内容基于公开信息整理，不包含官方认证标识。</div>
+            </details>
+            <details>
+                <summary>页面上的信息更新频率如何？</summary>
+                <div class="answer">内容视赛事筹备进展进行适度更新，但不会频繁变动结构。本页更侧重长期稳定性而非实时新闻。</div>
+            </details>
+            <details>
+                <summary>链接指向哪里？</summary>
+                <div class="answer">站内链接指向 homezh-fifa2026.com 域名下的相关页面。所有外部引用均会明确标注，且仅链接至可公开访问的常规信息源。</div>
+            </details>
+        </div>
+
+        <div class="usage-note">
+            <p><strong>克制访问说明</strong> · 本页及其关联站点不收集用户个人数据，不设置 Cookie 弹窗，也不包含第三方跟踪脚本。你可以把它当作一个安静的参考页来使用。如遇到链接失效或内容明显过时，欢迎通过站点上的联系方式反馈（页面暂未设置独立联系表单，但域名邮箱可接收邮件）。</p>
+        </div>
+
+        <div class="closing-line">
+            <span>与 <a href="https://homezh-fifa2026.com" class="inline-link-highlight">世界杯</a> 有关的一个安静角落 · 仅供信息参考</span>
+        </div>
+    </div>
+</body>
+</html>
