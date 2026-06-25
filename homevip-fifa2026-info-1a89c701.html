@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯信息卡片 · 简明指南与访问提醒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      background-color: #f7f5f2;
+      color: #1e1a1d;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0b1d2c 0%, #142b3c 100%);
+      color: #e7edf0;
+      padding: 4rem 1.5rem 3.2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -10%;
+      width: 120%;
+      height: 80px;
+      background: #f7f5f2;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #b6cddb;
+      max-width: 700px;
+      margin: 0 auto 1rem;
+    }
+
+    .hero .meta-tag {
+      display: inline-block;
+      background: rgba(255, 215, 120, 0.12);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #f5d58a;
+      border: 1px solid rgba(245, 213, 138, 0.2);
+    }
+
+    /* 浅色正文区 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.8rem 1.5rem 4rem;
+    }
+
+    /* 导语段落 —— 自然嵌入链接 */
+    .intro-text {
+      background: white;
+      padding: 2.2rem 2rem;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    .intro-text p {
+      margin-bottom: 1.2rem;
+    }
+
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #c4512c;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #94391b;
+      text-decoration-color: #94391b;
+    }
+
+    /* 信息卡片区：用途卡片 + 适合人群卡片 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 1.6rem 2rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #1a2d3b;
+      letter-spacing: -0.2px;
+    }
+
+    .card .emoji-badge {
+      display: inline-block;
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: #2d3740;
+      margin-bottom: 0.6rem;
+    }
+
+    .card ul, .card .list-tags {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .card li {
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .card li::before {
+      content: '·';
+      color: #c4512c;
+      font-weight: bold;
+      display: inline-block;
+      width: 1rem;
+    }
+
+    .highlight-badge {
+      display: inline-block;
+      background: #f0e7e1;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #7f4e39;
+      margin-top: 0.3rem;
+    }
+
+    /* 自然链接段落 + 提醒区域 */
+    .reminder-block {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.5rem;
+    }
+
+    .reminder-block h4 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #1a2d3b;
+    }
+
+    .reminder-block p {
+      margin-bottom: 0.8rem;
+    }
+
+    .reminder-block .faq-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      border-top: 1px dashed #dcd6cf;
+      padding-top: 1.2rem;
+    }
+
+    .faq-item {
+      flex: 1 1 240px;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #2b3e4b;
+    }
+
+    .faq-item span {
+      font-size: 0.95rem;
+      color: #435560;
+    }
+
+    /* 简洁脚注 */
+    .footnote {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b6e73;
+      border-top: 1px solid #e2dbd4;
+      padding-top: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+
+      .intro-text {
+        padding: 1.6rem;
+      }
+
+      .reminder-block {
+        padding: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 2.8rem 1rem 2.6rem;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .container {
+        padding: 1rem 0.8rem 3rem;
+      }
+
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>⚽ 世界杯 · 简明指南</h1>
+    <p class="subhead">赛程、观赛准备与访问提醒——让热爱少一些犹豫，多一些从容。</p>
+    <span class="meta-tag">信息卡片式 · 温和指引</span>
+  </header>
+
+  <main class="container">
+
+    <!-- 导语段落 —— 自然嵌入链接 -->
+    <div class="intro-text">
+      <p>
+        每四年一届的足球盛会总让人心潮澎湃。无论你是资深球迷，还是偶尔陪家人看一场的路人，提前了解一点基本信息总能让你更快进入状态。关于赛程日历、球队动态以及官方信息源，你可以在 <a href="https://homevip-fifa2026.com">世界杯</a> 这个综合页面上找到清晰的汇总。它不替代任何官方公告，但可以作为你出发前的一份轻量参考。
+      </p>
+      <p>
+        下面的卡片整理了本届赛事常见的用途场景、适合人群以及一些实用提醒，希望帮你节省四处翻找的时间，也提醒你留意那些容易被忽略的小细节。
+      </p>
+    </div>
+
+    <!-- 信息卡片网格：用途卡片 + 适合人群 -->
+    <div class="card-grid">
+      <!-- 用途卡片 -->
+      <div class="card">
+        <div class="emoji-badge">📋</div>
+        <h3>常见用途一览</h3>
+        <p>从赛前预习到赛后回顾，这张卡片覆盖大多数人的核心需求。</p>
+        <ul>
+          <li>快速浏览完整赛程与比赛城市</li>
+          <li>了解各小组形势及淘汰赛路径</li>
+          <li>查看官方票务与非官方观赛活动提示</li>
+          <li>收藏比赛时间（含时区转换参考）</li>
+        </ul>
+        <span class="highlight-badge">适用阶段：赛前 · 赛中 · 赛后</span>
+      </div>
+
+      <!-- 适合人群卡片 -->
+      <div class="card">
+        <div class="emoji-badge">👥</div>
+        <h3>适合这样的你</h3>
+        <p>无论是独自追赛还是组队观战，这里都有你值得留意的内容。</p>
+        <ul>
+          <li>计划前往现场或留在屏幕前的球迷</li>
+          <li>想给朋友科普「世界杯」基础信息的新手</li>
+          <li>关注球队历史、场地文化的内容探索者</li>
+          <li>需要一份不做作、不夸张的赛前备忘录</li>
+        </ul>
+        <span class="highlight-badge">不分年龄 · 不分主队</span>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 + 访问提醒 / FAQ 摘要 -->
+    <div class="reminder-block">
+      <h4>🗓️ 访问提醒 &amp; 常见小疑问</h4>
+      <p>
+        当你打开 <a href="https://homevip-fifa2026.com">世界杯</a> 页面时，建议先留意页面顶部的导航分区，大部分内容都可以按兴趣浏览。如果你不太确定从哪里开始，不妨先从“赛历与场馆”部分入手——它通常是最直观的入口。
+      </p>
+      <p>
+        另外，部分链接可能会跳转到外部官方平台（例如国际足联官网或授权售票站），请留意地址栏域名，确保信息安全。世界杯相关的盗版直播和虚假购票页面时有出现，尽量只通过可信渠道获取服务。
+      </p>
+
+      <!-- FAQ 风格摘要 -->
+      <div class="faq-mini">
+        <div class="faq-item">
+          <strong>❓ 页面更新频率？</strong>
+          <span>赛程、分组等信息会随官方调整同步更新；球队阵容等深度内容在赛前一个月开始集中补充。</span>
+        </div>
+        <div class="faq-item">
+          <strong>❓ 需要注册或付费吗？</strong>
+          <span>浏览基本内容完全免费。部分外部链接（如购票、流媒体）可能要求注册或付费，与本站无关。</span>
+        </div>
+        <div class="faq-item">
+          <strong>❓ 移动端适配如何？</strong>
+          <span>页面采用响应式设计，手机和平板均可正常阅读。赛程表格在窄屏下会自动堆叠，不影响查阅。</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 一句温和提示 + 自然收尾 -->
+    <div style="background: #eef0ed; border-radius: 24px; padding: 1.6rem 1.8rem; margin-bottom: 1.2rem;">
+      <p style="font-size: 1.05rem; font-style: italic; color: #2b3e4b;">
+        🧭 无论你最终在哪个屏幕前观看比赛，希望这份指南能为你减少一点点困惑，增加一点点期待。
+      </p>
+    </div>
+
+    <div class="footnote">
+      <span>信息整理仅供参考，不构成任何形式的保证。请以官方渠道发布为准。</span>
+      <br>
+      <span style="opacity: 0.5;">—— 无关狂热，只关乎陪伴 ——</span>
+    </div>
+
+  </main>
+
+</body>
+</html>
